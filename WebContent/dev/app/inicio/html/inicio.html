@@ -1,0 +1,55 @@
+<meta charset="UTF-8" />
+  
+ 
+ <!--  
+<onboarding-popover enabled="true" steps="onboardingSteps" on-finish-callback='myCallbackFunction()' step-index='onboardingIndex'></onboarding-popover>
+-->
+<br>
+<div class="col-lg-12 col-xs-12">
+	<div class="panel panel-default">
+	
+	   <estados-cidades></estados-cidades>
+	    <div class="panel-heading ">
+	     <h3 class="text-muted panel-title" > <strong><i class="fa fa-lightbulb-o" aria-hidden="true"></i>  O que você deseja fazer?</strong></h3>
+	    </div>
+	    <div class="panel-body" style="min-height:139px">
+	    
+	        <div class="col-lg-4 col-xs-12"  style="padding:12px;" >
+				<a href="#/produto" class="btn btn-block btn-default btn-lg" style="color:rgba(86, 85, 85, 0.85);">
+					<i class="fa fa-list icone-atalhos-inicio fa-2x" style="font-size: 3em;color:#4aba58;"></i><br>  Associados
+					<br>
+					<label class="text-muted" style="font-size:12px;"><i class="fa fa-info-circle"></i>
+					   Visualizar lista de associados cadastrados.
+					</label>
+				</a>
+			</div>
+			
+	        <div class="col-lg-4 col-xs-12"  style="padding:12px;">
+				<a  ng-click="atualizarEstoque()" class="btn btn-block btn-default btn-lg"  style="color:rgba(86, 85, 85, 0.85);">
+					<i id="atalho-entrada-mercadoria" class="fa fa-truck icone-atalhos-inicio fa-2x onboarding-pulse" style="font-size: 3em;color:#4aba58;"></i><br> Cadastrar despesa  
+					<br>
+					<label class="text-muted" style="font-size:12px;"><i class="fa fa-info-circle"></i>
+					    Cadastro de despesas como: água, luz, telefone, etc
+					</label>
+				</a>
+				
+			</div>
+			
+			<div class="col-lg-4 col-xs-12"  style="padding:12px;">
+				<a ng-click="novaVenda()" class="btn btn-block btn-default btn-lg"   style="color:rgba(86, 85, 85, 0.85);">
+					 <i  id="atalho-nova-venda" class="fa fa-cart-plus icone-atalhos-inicio fa-2x onboarding-pulse"  style="font-size: 3em;color:#4aba58;" ></i><br>Relatórios
+					 <br>
+					 <label class="text-muted" style="font-size:12px;"><i class="fa fa-info-circle"></i>
+					   Visualizar diversos relatórios
+					</label>
+				</a>
+			</div>
+	    
+			
+		</div>
+	</div>
+</div>
+
+
+
+

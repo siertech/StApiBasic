@@ -1,0 +1,4 @@
+/target/
+
+.elasticbeanstalk/
+.apt_generated/
