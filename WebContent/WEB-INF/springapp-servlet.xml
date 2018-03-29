@@ -26,9 +26,8 @@
       
      
      <!-- Mapeamento de classes da API -->
-     <context:component-scan base-package="com.siertech.stapi.security" /> 
-     <context:component-scan base-package="com.siertech.stapi.pessoa" />
-     <context:component-scan base-package="com.siertech.stapi.movimentacao" /> 
+    <context:component-scan base-package="com.siertech.stapi.security" /> 
+    <context:component-scan base-package="com.siertech.stapi.pessoa" />
 	<context:component-scan base-package="com.siertech.stapi.util" />
 	<context:component-scan base-package="com.siertech.stapi.operadorsistema" />
 	<context:component-scan base-package="com.siertech.stapi.config" />
@@ -38,6 +37,8 @@
     <context:component-scan base-package="com.siertech.stapi.gerencianet" />
     <context:component-scan base-package="com.siertech.stapi.transactional" />
     <context:component-scan base-package="com.siertech.stapi.estadoscidades" />
+    <context:component-scan base-package="com.siertech.stapi.opcao" />
+    <context:component-scan base-package="com.siertech.stapi.projecao" />
       
     <bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
