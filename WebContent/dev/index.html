@@ -37,106 +37,51 @@
 </head>
   <span us-spinner spinner-key="spinner-1"></span>
 
-<body style="background-color:white;" >
-     <!-- Notificações -->
-	<div growl></div>
-
+<body>
+   
+     <!-- Notificações exibidas através de stUtil.showMessage() -->
+	 <div growl></div>
+	 
+	
+    <!-- Splash Screen --> 
 	<div style="margin-top: 15%; text-align:center" class="splash" ng-cloak="">
 	    <img width="329px" src="splash.gif"/>
-	    <p id="text-loading">Carregando o sistema...</p>
+	     <p id="text-loading">Carregando o sistema...</p>
 	</div>
 
-	<!-- Corpo da página -->
-	<div id="wrapper" ng-cloak="">
-	
-		<!-- Menu mobile e menu desktop --> 
-		<st-menu 
-			itens="
-                   [
-                    
-                    {path:'inicio', label:'Início', icon:'home'},
-                   
-                   ]
-                ">
-		</st-menu>
-		
-		<!-- Conteudo -->
-		<div
-			id="{{(atualPage!='Login' && atualPage!='Alterar senha')?'page-wrapper':''}}">
-			<div style="margin-top: 62px;" class="printHide"></div>
-			<test-user-button ng-show="(!testIsOpen || testIsOpen==false) && config.confs.usuarioTeste=='true'"></test-user-button>  
-			<!-- Conteúdo das rotas -->
-			<div id="anchor_cima"></div>
-			<div class="route-view" ng-view>
-			    
-			</div>
+   <!-- Corpo da página -->
+	<div ng-cloak="">
+	   <ng-include src="'app/menu/html/menu.html'"></ng-include>
+	  	<div flex layout="row" layout-padding>
+	      <!-- Container #4 -->
+	      <md-content flex id="content" ng-view>
+	         	<test-user-button ng-show="(!testIsOpen || testIsOpen==false)"></test-user-button>  
+	      </md-content>
 		</div>
 	</div>
 </body>
 
-<script src="https://www.youtube.com/iframe_api"></script>
-
-<!-- escolha dinamica do tema a ser utilizado 
-<link ng-href="global/{{config.confs.temaLayout||'light'}}.css"rel="stylesheet">
--->
 
 <!-- CSS da api -->
 <link rel="stylesheet" href="../bower_components/stapiweb/css/st-api.css"/>
 
-<!-- CSS da aplicação -->
-<!-- build:css css/app.css -->
-
-<link href='app/veiculo/css/style.css' />
-
-<link href='app/veiculo/css/style.css' />
-
-<link href='app/veiculo/css/style.css' />
-
-<link href='app/produto/css/style.css' />
-
-<link href='app/produto/css/style.css' />
-
-<!-- endbuild -->
-
 <!-- Biblioteca base da api-->
 <script src="../bower_components/stapiweb/js/st-api-lib-base.js"></script>
+
+<!--Arquivo principal da Api -->
+<script src="../bower_components/stapiweb/js/st-api.js"></script>
+
+<!-- Templates da API -->
+<script src="../bower_components/stapiweb/js/st-api-templates.js"></script>
 
 <!-- Arquivos de configuração da aplicação -->
 <script src="app-config.js"></script>
 
-<!-- Templates -->
-<script src="../bower_components/stapiweb/js/st-api-templates.js"></script>
-
-<!-- Api -->
-<script src="../bower_components/stapiweb/js/st-api.js"></script>
-
 <!-- JS da aplicação -->
 <!-- build:js js/app.js -->
 
-<!-- Veiculo -->
- <script src='app/veiculo/js/list.js'></script>
-<script src='app/veiculo/js/util.js'></script>
-
-
-<!-- Veiculo -->
- <script src='app/veiculo/js/list.js'></script>
-<script src='app/veiculo/js/util.js'></script>
-
-
-<!-- Veiculo -->
- <script src='app/veiculo/js/list.js'></script>
-<script src='app/veiculo/js/util.js'></script>
-
-
-<!-- Produto -->
- <script src='app/produto/js/list.js'></script>
-<script src='app/produto/js/util.js'></script>
-
-
-<!-- Produto -->
- <script src='app/produto/js/list.js'></script>
-<script src='app/produto/js/util.js'></script>
-
+<!-- Menu da aplicação -->
+<script src="app/menu/js/menuController.js"></script>
 
 <!-- Login no sistema -->
 <script src="app/login/js/loginConfig.js"></script>
@@ -206,82 +151,5 @@ if(window.location.href.indexOf("localhost")==-1 && window.location.href.indexOf
  window.inicioCarregamento = new Date().getTime();
 </script>
 
-
-
-<!-- Start of Async Drift Code -->
-<script>
-!function() {
-  var t;
-  if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0, 
-  t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
-  t.factory = function(e) {
-    return function() {
-      var n;
-      return n = Array.prototype.slice.call(arguments), n.unshift(e), t.push(n), t;
-    };
-  }, t.methods.forEach(function(e) {
-    t[e] = t.factory(e);
-  }), t.load = function(t) {
-    var e, n, o, i;
-    e = 3e5, i = Math.ceil(new Date() / e) * e, o = document.createElement("script"), 
-    o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + i + "/" + t + ".js", 
-    n = document.getElementsByTagName("script")[0], n.parentNode.insertBefore(o, n);
-  });
-}();
-drift.SNIPPET_VERSION = '0.3.1';
-drift.load('ksinakut9twv');
-
-<!-- place this script tag after the Drift embed tag -->
-
-  (function() {
-    /* Add this class to any elements you want to use to open Drift.
-     *
-     * Examples:
-     * - <a class="drift-open-chat">Questions? We're here to help!</a>
-     * - <button class="drift-open-chat">Chat now!</button>
-     *
-     * You can have any additional classes on those elements that you
-     * would ilke.
-     */
-    var DRIFT_CHAT_SELECTOR = '.drift-open-chat'
-    /* http://youmightnotneedjquery.com/#ready */
-    function ready(fn) {
-      if (document.readyState != 'loading') {
-        fn();
-      } else if (document.addEventListener) {
-        document.addEventListener('DOMContentLoaded', fn);
-      } else {
-        document.attachEvent('onreadystatechange', function() {
-          if (document.readyState != 'loading')
-            fn();
-        });
-      }
-    }
-    /* http://youmightnotneedjquery.com/#each */
-    function forEachElement(selector, fn) {
-      var elements = document.querySelectorAll(selector);
-      for (var i = 0; i < elements.length; i++)
-        fn(elements[i], i);
-    }
-    function openSidebar(driftApi, event) {
-      event.preventDefault();
-      driftApi.sidebar.open();
-      return false;
-    }
-    ready(function() {
-      drift.on('ready', function(api) {
-        var handleClick = openSidebar.bind(this, api)
-        forEachElement(DRIFT_CHAT_SELECTOR, function(el) {
-          el.addEventListener('click', handleClick);
-        });
-      });
-    });
-  })();
-</script>
-
-
-
-</script>
-<!-- End of Async Drift Code -->
 
 </html>

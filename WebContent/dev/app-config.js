@@ -2,73 +2,26 @@
 (function(){
 var app;
 try{
-	app  = angular.module("adm",["stApi"]);
+	app  = angular.module("adm",["stapi"]);
 }catch(e){
 	window.alert(e);
 }
 
-app.factory('config',function($location, $rootScope, $http, $templateCache){
-
-	
-	var _appInfo = {
-		
-			
-			$$path:"StApiBasic",
-			$$versao: "1.0",
-			$$paginaInicial: "/inicio"
-			
-			
-	}
-	
-	function getAppVersion(){
-		
-		return _appInfo.$$versao;
-	}
-	
-	function getUrlBase(){
-		
-		var pathApp = _appInfo.$$path+"/";
-		
-		//Servidor de teste local (Utilizado para deploy do .war gerado pelo jenkins)
-		if($location.$$absUrl.indexOf("7070/"+pathApp)!=-1)
-			 return "http://"+$location.$$host+":7070/"+pathApp;
-			
-		else if($location.$$absUrl.indexOf("8080/"+pathApp)!=-1)
-		  return "http://"+$location.$$host+":8080/"+pathApp;
-		
-		else if($location.$$absUrl.indexOf("8080")!=-1)
-			  return "http://"+$location.$$host+":8080/";
-		
-        //SSL
-		else if($location.$$absUrl.indexOf("https")!=-1)
-			return "https://"+$location.$$host+"/";
-                else
-                  return "http://"+$location.$$host+"/";
-		
-	}
-	
-	
-	function getPath(){
-		
-		return $location.path();
-	}
-	
-	
-	function cacheTemplates (){
-		//Função substituida com a inclusão com service-worker
-		
-	}
-	
-	
+app.factory('config',function(){
 
 	return {
-		info: _appInfo,
-		cacheTemplates: cacheTemplates,
-		baseUrl: getUrlBase(),
-		path: getPath(),
-		appVersion: getAppVersion()
-	};
-
+		  
+		scope: "static",
+		confs:{
+				path: "StApiBasic",
+				securityPaths: "all", //paths da aplicação onde a autenticação no sistema é necessária
+				appVersion: "1.0",
+				initialPath: "/cliente",
+				loginPath: "/login",
+				notFoundPath:"/notfound",
+				pathsToHideMenu: ["/login"] //Nos paths definido aqui o menu não será exibido
+		}
+	}
 
 });
 

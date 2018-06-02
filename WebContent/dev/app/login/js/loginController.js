@@ -2,16 +2,6 @@
 (function(){
 angular.module("adm").controller("loginController",function(demo, $scope, $location, $rootScope, $localStorage, $cookieStore, loginUtil, stUtil, redirect, st, config){
 
-
-	if($location.$$absUrl.indexOf("teste")!=-1 || $location.$$absUrl.indexOf("admin")!=-1 || $location.$$absUrl.indexOf("localhost") !=-1)
-		$scope.showCampoEmpresa = true;
-	
-	
-	if(redirect==true){
-		st.evt({evento:"usuario_foi_deslogado", descricao:"O usuário foi deslogado do Sistema"});
-
-	}
-
 	$scope.carregando = false;
 	$scope.lembrarSenha = true;
 
@@ -21,10 +11,9 @@ angular.module("adm").controller("loginController",function(demo, $scope, $locat
 	$scope.lembrarSenhaUsuario = function(){
 		loginUtil.openLembrarSenha();
 	}
-	
+
 	$scope.logar = function(login,lembrarSenha){
-		
-		
+
 
 		if(!login.usuario){
 
@@ -38,21 +27,16 @@ angular.module("adm").controller("loginController",function(demo, $scope, $locat
 			return;
 		}
 
-		if(!$scope.showCampoEmpresa || $scope.showCampoEmpresa == false)
-		   login.empresa = login.usuario;
-
 		$scope.carregando=true;
 		loginUtil.logar(login,lembrarSenha,function(loginData){
-			
+
 			$scope.carregando=false;
-			
+
 			if(loginData){
-				
-				 console.log("Usuário logado com sucesso!");
-				
-			     //rota padrao após login
-				 $location.path(config.info.$$paginaInicial || "/inicio");
-		
+
+				//rota padrao após login
+				$location.path(config.confs.initialPath || "/inicio");
+
 			}
 			else{
 				$scope.login.senha = "";
@@ -79,12 +63,11 @@ angular.module("adm").controller("loginController",function(demo, $scope, $locat
 		$scope.existeEmpresa = false;
 
 	}
-	
-	
 
 	if($localStorage.usuario && $localStorage.senha){
 		$scope.logar($scope.login, true);
 	}
+
 
 })
 
